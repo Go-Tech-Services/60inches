@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Store;
+use App\Http\Controllers\StoreController;
+
 
 class StoreController extends Controller
 {
 
 
-    public function index(Store $model)
+    public function index(Request $request)
     {
         return view('store.index');
     } 
