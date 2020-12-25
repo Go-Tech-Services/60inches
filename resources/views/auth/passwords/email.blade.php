@@ -22,23 +22,23 @@
                         <form class="form" method="POST" action="{{ route('password.email') }}">
                             @csrf
 
-                            <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
+                            <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }} mb-3">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ old('email') }}" required autofocus>
+                                    <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('Phone Number') }}" type="text" name="phone" value="{{ old('phone') }}" required autofocus>
                                 </div>
-                                @if ($errors->has('email'))
+                                @if ($errors->has('phone'))
                                     <div>
                                         <span class="invalid-feedback" style="display: block" role="alert">
-                                            <strong>{{ $errors->first('email') }}</strong>
+                                            <strong>{{ $errors->first('phone') }}</strong>
                                         </span>
                                     </div>
                                 @endif
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-warning btn-round mb-3">{{ __('Send Password Reset Link') }}</button>
+                                <button type="submit" class="btn btn-warning btn-round mb-3">{{ __('Send Password Reset Code') }}</button>
                             </div>
                         </form>
                     </div>

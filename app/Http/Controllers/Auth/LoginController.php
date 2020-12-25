@@ -26,7 +26,20 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+
+    // protected function authenticated(Request $request, $user) {
+    //   dd('djdsgjds');
+      // if ($user->role_id == 1) {
+      //   return redirect('/admin');
+      // } else if ($user->role_id == 2) {
+      //   return redirect('/author');
+      // } else {
+      //   return redirect('/blog');
+      // }
+//    }
+   
+
+     protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -37,13 +50,5 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-   protected function credentials(Request $request)
-      {
-        if(is_numeric($request->get('email'))){
-          return ['phone'=>$request->get('email'),'password'=>$request->get('password')];
-        }
-        elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
-          return ['email' => $request->get('email'), 'password'=>$request->get('password')];
-        }
-    }   
+   
 }

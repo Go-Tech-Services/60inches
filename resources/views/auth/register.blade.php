@@ -84,7 +84,7 @@
                                     <input name="phone" type="text" class="form-control" placeholder="Phone" required value="{{ old('phone') }}">
                                     @if ($errors->has('phone'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
-                                            <strong>{{ $errors->first('') }}</strong>
+                                            <strong>{{ $errors->first('phone') }}</strong>
                                         </span>
                                     @endif
                                 </div>

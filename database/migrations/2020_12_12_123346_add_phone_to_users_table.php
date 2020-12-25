@@ -16,6 +16,8 @@ class AddPhoneToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
             $table->string('phone')->unique();
+            $table->string('verification_code')->unique()->nullable();
+            $table->timestamp('phone_verified_at')->nullable();
         });
     }
 
