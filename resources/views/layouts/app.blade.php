@@ -114,8 +114,8 @@ The above copyright notice and this permission notice shall be included in all c
     <script src="{{ asset('paper') }}/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
     <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
     <script src="{{ asset('paper') }}/demo/demo.js"></script>
-    <!-- Sharrre libray -->
-    <script src="../assets/demo/jquery.sharrre.js"></script>
+    <!-- share libray -->
+    {{-- <script src="../assets/demo/jquery.share.js"></script> --}}
     
     @stack('scripts')
 
