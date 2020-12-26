@@ -49,8 +49,8 @@
 
 
                                     <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="input-email">{{ __('Mobile Number') }}</label>
-                                        <input type="text" name="phone" id="input-email" class="form-control form-control-alternative{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('Number') }}" value="{{ old('phone') }}">
+                                        <label class="form-control-label" for="input-phone">{{ __('Mobile Number') }}</label>
+                                        <input type="text" name="phone" id="input-phone" class="form-control form-control-alternative{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('Number') }}" value="{{ old('phone') }}">
 
                                         @if ($errors->has('phone'))
                                             <span class="invalid-feedback" role="alert">
@@ -61,8 +61,8 @@
 
 
                                     <div class="form-group{{ $errors->has('store_address') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="input-name">{{ __('Store Address') }}</label>
-                                        <input type="text" name="store_address" id="input-name" class="form-control form-control-alternative{{ $errors->has('store_address') ? ' is-invalid' : '' }}" placeholder="{{ __('Address') }}" value="{{ old('store_address') }}" autofocus>
+                                        <label class="form-control-label" for="store_address">{{ __('Store Address') }}</label>
+                                        <input type="text" name="store_address" id="store_address" class="form-control form-control-alternative{{ $errors->has('store_address') ? ' is-invalid' : '' }}" placeholder="{{ __('Address') }}" value="{{ old('store_address') }}" autofocus>
 
                                         @if ($errors->has('store_address'))
                                             <span class="invalid-feedback" role="alert">
