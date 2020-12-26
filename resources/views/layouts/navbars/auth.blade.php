@@ -17,6 +17,12 @@
                     <p>{{ __('Dashboard') }}</p>
                 </a>
             </li>
+            <li class="{{ $elementActive == 'dashboard' ? 'active' : '' }}">
+                <a href="{{ route('store.create') }}">
+                    <i class="nc-icon nc-bank"></i>
+                    <p>{{ __('Store Create') }}</p>
+                </a>
+            </li>
             <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">
                 <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples">
                     <i class="nc-icon"><img src="{{ asset('paper/img/laravel.svg') }}"></i>

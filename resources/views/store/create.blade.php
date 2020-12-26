@@ -2,6 +2,12 @@
     'class' => '',
     'elementActive' => 'store',
 ])
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" /> -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 @section('content')
     <div class="content">
         <div class="container-fluid mt--7">
@@ -14,12 +20,12 @@
                                     <h3 class="mb-0">{{ __('Store Registration') }}</h3>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <a href="{{ route('user.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                                    <a href="{{ route('store.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="" autocomplete="off" id="store-form">
+                            <form method="" action="" autocomplete="off" id="store-form">
                                 @csrf
                                 
                                 <h6 class="heading-small text-muted mb-4">{{ __('User information') }}</h6>
@@ -117,7 +123,7 @@
         </div>
     </div>
 <script>
-     $("#store-form").validate({
+     jQuery("#store-form").validate({
       rules: {
         name: {
             required:true
@@ -143,7 +149,7 @@
             required: "Please Enter Store Name",
         },
         email: {
-            required: "Please Enter Email",
+            required: "Please Enter phone Number",
         },
         store_address: {
             required: "Please Enter Store Address",
@@ -155,26 +161,26 @@
       submitHandler: function(form) {
        $.ajaxSetup({
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
             }
         });
-        $('#store-form-button').html('Sending..');
+        jQuery('#store-form-button').html('Sending..');
         $.ajax({
           url: "{{ route('store.store') }}" ,
           type: "POST",
-          data: $('#store-form').serialize(),
+          data: jQuery('#store-form').serialize(),
           success: function( response ) {
-            console.log'(response');
+            console.log('response');
             console.log(response);
-            //   $('#store-form-button').html('Submit');
-            //   $('#res_message').show();
-            //   $('#res_message').html(response.msg);
-            //   $('#msg_div').removeClass('d-none');
+            //   jQuery('#store-form-button').html('Submit');
+            //   jQuery('#res_message').show();
+            //   jQuery('#res_message').html(response.msg);
+            //   jQuery('#msg_div').removeClass('d-none');
    
             //   document.getElementById("store-form").reset(); 
             //   setTimeout(function(){
-            //   $('#res_message').hide();
-            //   $('#msg_div').hide();
+            //   jQuery('#res_message').hide();                                                                                                                             
+            //   jQuery('#msg_div').hide();
             //   },10000);
           },
           error: function ( err ){
@@ -183,6 +189,6 @@
           }
         });
       }
-    });
+    })(jQuery);
 </script>
 @endsection
