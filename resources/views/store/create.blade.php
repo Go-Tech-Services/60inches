@@ -43,8 +43,8 @@
                                     </div>
 
                                     <div class="form-group{{ $errors->has('store_name') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="input-name">{{ __('Store Name') }}</label>
-                                        <input type="text" name="store_name" id="input-name" class="form-control form-control-alternative{{ $errors->has('store_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Store Name') }}" value="{{ old('store_name') }}" autofocus>
+                                        <label class="form-control-label" for="store_name">{{ __('Store Name') }}</label>
+                                        <input type="text" name="store_name" id="store_name" class="form-control form-control-alternative{{ $errors->has('store_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Store Name') }}" value="{{ old('store_name') }}" autofocus>
 
                                         @if ($errors->has('store_name'))
                                             <span class="invalid-feedback" role="alert">
@@ -55,8 +55,8 @@
 
 
                                     <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="input-phone">{{ __('Mobile Number') }}</label>
-                                        <input type="text" name="phone" id="input-phone" class="form-control form-control-alternative{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('Number') }}" value="{{ old('phone') }}">
+                                        <label class="form-control-label" for="phone">{{ __('Mobile Number') }}</label>
+                                        <input type="text" name="phone" id="phone" class="form-control form-control-alternative{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('Number') }}" value="{{ old('phone') }}">
 
                                         @if ($errors->has('phone'))
                                             <span class="invalid-feedback" role="alert">
@@ -79,8 +79,8 @@
                                     
 
                                      <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
-                                        <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email') }}">
+                                        <label class="form-control-label" for="email">{{ __('Email') }}</label>
+                                        <input type="email" name="email" id="email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email') }}">
 
                                         @if ($errors->has('email'))
                                             <span class="invalid-feedback" role="alert">
@@ -151,7 +151,7 @@
             required: "Please Enter Store Name",
         },
         email: {
-            required: "Please Enter phone Number",
+            required: "Please Enter Email",
         },
         store_address: {
             required: "Please Enter Store Address",
@@ -191,6 +191,6 @@
           }
         });
       }
-    })(jQuery);
+    });
 </script>
 @endsection
