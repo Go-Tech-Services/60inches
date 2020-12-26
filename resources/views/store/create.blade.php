@@ -116,6 +116,8 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <script>
      $("#store-form").validate({
       rules: {
@@ -164,7 +166,7 @@
           type: "POST",
           data: $('#store-form').serialize(),
           success: function( response ) {
-            console.log'(response');
+            console.log('response');
             console.log(response);
             //   $('#store-form-button').html('Submit');
             //   $('#res_message').show();
