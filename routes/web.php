@@ -19,8 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/store', 'StoreController@index');
-Route::get('/store', 'StoreController@create');
+// Route::get('/store', 'StoreController@index');
+// Route::get('/store', 'StoreController@create');
+Route::resource('store', 'StoreController');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -40,5 +41,6 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('{page}', ['as' => 'page.index', 'uses' => 'PageController@index']);
 });
+
 
 

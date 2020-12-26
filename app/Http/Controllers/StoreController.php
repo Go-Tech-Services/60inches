@@ -21,7 +21,14 @@ class StoreController extends Controller
     }
     public function store(Request $request)
     {
-       
+        $request->validate([
+            'name' => 'required',
+            'store_name' => 'required', 
+            'email' => 'required', 
+            'store_address' => 'required', 
+            'phone' => 'required',
+        ]);
+        dd('Store From Validation working Properly!!!!!!!!!!');
         $cover = $request->file('filename');
         $extension = $cover->getClientOriginalExtension();
         Storage::disk('public')->put($cover->getFilename().'.'.$extension,  File::get($cover));
