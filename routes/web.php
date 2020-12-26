@@ -14,14 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Auth::routes();
 Auth::routes(['register' => false]);
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/store', 'StoreController@index');
+Route::get('/store', 'StoreController@create');
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::get('firebase-phone-authentication', 'HomeController@invisiblecaptcha')->name('invisiblecaptcha');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
