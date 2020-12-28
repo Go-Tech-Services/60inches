@@ -2,13 +2,14 @@
 
 namespace App;
 
+
 use Illuminate\Database\Eloquent\Model;
 use App\Store;
 
 class Store extends Model
 {
     //
-    use Notifiable;
+    protected $table = 'store_owner_info';
 
     /**
      * The attributes that are mass assignable.

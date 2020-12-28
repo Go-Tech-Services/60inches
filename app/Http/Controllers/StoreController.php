@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\StoreController;
+use App\store;
 
 
 class StoreController extends Controller
@@ -12,7 +13,7 @@ class StoreController extends Controller
 
     public function index(Request $request)
     {
-        return view('store.storedashboard');
+        return view('store.index');
     } 
     
     public function create()
@@ -21,6 +22,9 @@ class StoreController extends Controller
     }
     public function store(Request $request)
     {
+
+    
+
         $request->validate([
             'name' => 'required',
             'store_name' => 'required', 
@@ -28,18 +32,39 @@ class StoreController extends Controller
             'store_address' => 'required', 
             'phone' => 'required',
         ]);
-        dd('Store From Validation working Properly!!!!!!!!!!');
-        $cover = $request->file('filename');
-        $extension = $cover->getClientOriginalExtension();
-        Storage::disk('public')->put($cover->getFilename().'.'.$extension,  File::get($cover));
     
-        $logo = new Logo();
-        $logo->mime = $cover->getClientMimeType();
-        $logo->filename = $cover->getFilename().'.'.$extension;
-        $logo->save();
-    
-        return redirect()->route('store.storedashboard')
-            ->with('success','Logo added successfully...');
-    }
+        // if(request()->hasFile('filename')){
+        //     $filename=request()->file('filename')->getClientOriginalName();
+        //     $extension = $filename->getClientOriginalExtension();
+        //     $request()->file('filename')->storeAs('filename',$user->id.'/','');
+        //     $user->update(['filename'->$filename]);
+        //     Storage::disk('public')->put($filename->getFilename().'.'.$extension,  File::get($filename));
+        //     $store->save();
+        
+        $store = new Store();
+        
+        $store->name=$request->get('name');
+        $store->store_name=$request->get('store_name');	
+        $store->email =$request->get('email');		
+		$store->password=$request->get('password');	
+        $store->phone =$request->get('phone');	
+        $store->store_address=$request->get('store_address');		
+        // $store->filename=$request->get('filename');
+        // $request->file->storeAs('filename', $request->file->getClientOriginalName(),'');				
+        $store->save();
+        return redirect()->route('store.index')->withStatus(__('User successfully created.'));
 
-}
+        request()->validate([
+            'filename' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+       ]);
+       if ($files = $request->file('filename')) {
+           $destinationPath = 'public/'; // upload path
+           $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
+           $files->move($destinationPath, $profileImage);
+        }
+
+
+
+        
+      }
+    }

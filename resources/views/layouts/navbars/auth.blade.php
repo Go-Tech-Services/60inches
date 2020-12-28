@@ -17,10 +17,10 @@
                     <p>{{ __('Dashboard') }}</p>
                 </a>
             </li>
-            <li class="{{ $elementActive == 'dashboard' ? 'active' : '' }}">
+            <li class="{{ $elementActive == 'store' ? 'active' : '' }}">
                 <a href="{{ route('store.create') }}">
-                    <i class="nc-icon nc-bank"></i>
-                    <p>{{ __('Store Create') }}</p>
+                    <i class="nc-icon nc-shop"></i>
+                    <p>{{ __('Store Creation') }}</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">
