@@ -15,17 +15,23 @@ class CreateStoreOwnerInfoTable extends Migration
     {
         Schema::create('store_owner_info', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('store_name');
+            $table->string('owner_name');
+            $table->string('store_name')->unique();
+            $table->text('store_address');
             $table->string('phone')->unique();
-            $table->string('store_address');
-            $table->string('filename')->nullable();
-            $table->string('mime')->nullable();
+            $table->string('email')->unique();
+            $table->string('store_logo');
+            $table->string('url');
+            $table->integer('created_by')->unsigned();
+            $table->integer('updated_by')->unsigned();
+            $table->softDeletes();
             $table->timestamps();
         });
+        Schema::create('store_owner_info', function (Blueprint $table) {
+            $table->foreign('created_by')->references('id')->on('store');
+            $table->foreign('updated_by')->references('id')->on('store');
+        });
+        
     }
 
     /**
