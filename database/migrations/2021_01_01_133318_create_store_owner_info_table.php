@@ -22,16 +22,11 @@ class CreateStoreOwnerInfoTable extends Migration
             $table->string('email')->unique();
             $table->string('store_logo');
             $table->string('url');
-            $table->integer('created_by')->unsigned();
-            $table->integer('updated_by')->unsigned();
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->softDeletes();
             $table->timestamps();
         });
-        Schema::create('store_owner_info', function (Blueprint $table) {
-            $table->foreign('created_by')->references('id')->on('store');
-            $table->foreign('updated_by')->references('id')->on('store');
-        });
-        
     }
 
     /**
