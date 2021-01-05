@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\StoreController;
-use App\store;
+use App\Store;
 
 
 class StoreController extends Controller
@@ -12,7 +12,8 @@ class StoreController extends Controller
 
     public function index(Request $request)
     {
-        return view('store.index');
+        $stores = Store::all();
+        return view('store.index',['stores' => $stores]);
     } 
     
     public function create()

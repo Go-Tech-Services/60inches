@@ -23,7 +23,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/store', 'StoreController@create');
 Route::resource('store', 'StoreController');
 Route::post('/store/store', 'StoreController@store');
-
+// Route::get('/user',function()  
+// {  
+//   return User::find(id)->Store;  
+// }  
+// );  
+// Route::get('/store',function()  
+// {  
+//   return Store::find(id)->User;  
+// }  
+// ); 
 
 Route::get('/home', 'HomeController@index')->name('home');
 

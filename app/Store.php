@@ -9,7 +9,7 @@ use App\Store;
 class Store extends Model
 {
     //
-    protected $table = 'store_owner_info';
+    protected $table = 'store_info';
 
     /**
      * The attributes that are mass assignable.
@@ -19,6 +19,9 @@ class Store extends Model
     protected $fillable = [
         'id','owner_name','store_name','store_address','email','phone','store_logo','created_by','updated_by'
     ];
-
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
     
 }
