@@ -47,7 +47,6 @@ class StoreController extends Controller
 
         ]);
        
-
         // $profileImage = '';
         // if ($request->store_logo) {
         //     $files = $request->store_logo;
@@ -67,7 +66,7 @@ class StoreController extends Controller
         $store->store_logo = $request->get('store_logo');
         $store->created_by = \Auth::user()->id;
         $store->updated_by = null;// $request->file->storeAs('filename', $request->file->getClientOriginalName(),'');				
-        $store->url="absb";
+        $store->url= str_slug($request->get('store_name'), "-");
         $store->save();
     
         return redirect()->route('store.index')->withStatus(__('User successfully created.'));
