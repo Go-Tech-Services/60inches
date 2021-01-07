@@ -29,7 +29,7 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- Canonical SEO -->
     <link rel="canonical" href="https://www.creative-tim.com/product/paper-dashboard-laravel" />
 
-
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!--  Social tags      -->
     <meta name="keywords" content="design system, dashboard, bootstrap 4 dashboard, bootstrap 4 design, bootstrap 4 system, bootstrap 4, bootstrap 4 uit kit, bootstrap 4 kit, paper, paper dashboard, creative tim, updivision, html dashboard, html css template, web template, bootstrap, bootstrap 4, css3 template, frontend, responsive bootstrap template, bootstrap dashboard, responsive dashboard, laravel, laravel php, laravel php framework, free laravel admin template, free laravel admin, free laravel admin template + Front End + CRUD, crud laravel php, crud laravel, laravel backend admin dashboard">
     <meta name="description" content="Start your development with a Bootstrap 4 Admin Dashboard built for Laravel Framework 5.5 and Up.">

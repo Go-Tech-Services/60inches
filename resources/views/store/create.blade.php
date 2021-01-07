@@ -102,7 +102,7 @@
             var store_name = $('#store_name_val').val();
             var phone = $('#phone_val').val();
             var store_address = $('#store_address_val').val();
-            var store_logo = $('store_logo_val').val();
+            var store_logo = $('#store_logo_val').val();
         console.log(owner_name);
         console.log(email);
         $.ajax({
