@@ -20,10 +20,10 @@ class CreateStoreInfoTable extends Migration
             $table->text('store_address');
             $table->string('phone')->unique();
             $table->string('email')->unique();
-            $table->string('store_logo');
-            $table->string('url');
-            $table->integer('created_by');
-            $table->integer('updated_by');
+            $table->string('store_logo')->nullable();
+            $table->string('url')->nullable();
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
