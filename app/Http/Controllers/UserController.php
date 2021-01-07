@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\StoreController;
+use App\Store;
 
 class UserController extends Controller
 {
@@ -26,6 +28,8 @@ class UserController extends Controller
      */
     public function create()
     {
+        $storelist = Store::all();
+        dd($storelist);
         return view('users.create');
     }
 
