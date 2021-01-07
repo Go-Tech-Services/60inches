@@ -35,6 +35,23 @@
                                             </span>
                                         @endif
                                     </div>
+                                    <div class="form-group{{ $errors->has('store') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="input-store">{{ __('Select Store Name') }}</label>
+                                        <select class="custom-select">
+                                            <option selected>Open this select menu to select store</option>
+                                            @foreach ($storelist as $store)
+                                                <option value="{{$store->id}}">{{$store->store_name}}||({{$store->owner_name}})</option>
+                                            @endforeach
+                                            {{-- <option value="2">Two</option>
+                                            <option value="3">Three</option> --}}
+                                        </select>
+                                        @if ($errors->has('store'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('store') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
                                     <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
                                         <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email') }}" required>

@@ -29,8 +29,11 @@ class UserController extends Controller
     public function create()
     {
         $storelist = Store::all();
-        dd($storelist);
-        return view('users.create');
+        // dd($storelist);
+        return view('users.create', compact(
+                'storelist'
+            )
+        );
     }
 
     /**
