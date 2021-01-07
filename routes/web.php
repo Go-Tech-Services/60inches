@@ -44,13 +44,14 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 
-
-
-});
-
-Route::group(['middleware' => 'auth'], function () {
+	Route::resource('store', 'StoreController');
+	Route::post('/store/store', 'StoreController@store');
 	Route::get('{page}', ['as' => 'page.index', 'uses' => 'PageController@index']);
+
+
 });
+
+
 
 
 

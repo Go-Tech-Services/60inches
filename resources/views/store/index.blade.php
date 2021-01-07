@@ -1,9 +1,9 @@
 @extends('layouts.app', [
     'class' => '',
-    'elementActive' => 'Store',
+    'elementActive' => 'store',
 ])
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
  
 <html lang="en">
 <head>
@@ -43,7 +43,7 @@
      });
   </script>
    </body>
-   </html>
+   </html> -->
 <!--     
 @section('content')
     <div class="content">
