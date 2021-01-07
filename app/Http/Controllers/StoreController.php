@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\StoreController;
+use Redirect,Response,DB,Config;
+use Datatables;
 use App\Store;
 
 
@@ -48,7 +50,10 @@ class StoreController extends Controller
             $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
             $files->move($destinationPath, $profileImage);
         }
-        $project = Store::create($data);
+        $store = DB::table('store_info')->select('*');
+        return datatables()->of($stores)
+            ->make(true);
+        // $project = Store::create($data);
         // $store = new Store();
         // $store->owner_name = $request->get('owner_name');
         // $store->store_name = $request->get('store_name');	
@@ -62,4 +67,5 @@ class StoreController extends Controller
         return redirect()->route('store.index')->withStatus(__('User successfully created.'));
         
     }
+
 }
