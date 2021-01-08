@@ -119,6 +119,7 @@
           },
           success:function(response){
             console.log(response);
+            window.location.href = "{{ route('store.index')}}";
           },
           error:function(error){
                 $('#validation-errors').html('');

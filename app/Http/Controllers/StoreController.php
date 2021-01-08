@@ -69,7 +69,7 @@ class StoreController extends Controller
         $store->url= str_slug($request->get('store_name'), "-");
         $store->save();
     
-        return redirect()->route('store.index')->withStatus(__('User successfully created.'));
+        return redirect()->route('store.index')->withStatus(__('Store successfully created.'));
         
     }
 
