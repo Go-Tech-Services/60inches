@@ -20,9 +20,9 @@ class Store extends Model
         'id','owner_name','store_name','store_address','email','phone','store_logo','created_by','updated_by'
     ];
     
-    public function get_users(){
-        return $this->hasMany('App\User', 'store_id', 'id');
-    }
+    // public function get_users(){
+    //     return $this->hasMany('App\User', 'id', 'store_id');
+    // }
 
     
 }

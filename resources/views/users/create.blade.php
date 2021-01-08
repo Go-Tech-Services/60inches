@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="form-group{{ $errors->has('store') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="input-store">{{ __('Select Store Name') }}</label>
-                                        <select class="custom-select">
+                                        <select class="custom-select" name="store_id">
                                             <option selected>Open this select menu to select store</option>
                                             @foreach ($storelist as $store)
                                                 <option value="{{$store->id}}">{{$store->store_name}}||({{$store->owner_name}})</option>

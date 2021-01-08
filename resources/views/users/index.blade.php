@@ -47,7 +47,12 @@
                                     @foreach ($users as $user)
                                         <tr>
                                             <td>{{ $user->name }}</td>
-                                            <td>{{ $user->get_store_name}}</td>
+                                            <td>
+                                                @php
+                                                    $store_name = \DB::table('store_info')->where('id',$user->store_id)->first();
+                                                @endphp
+                                                {{ $store_name->store_name ?? 'No Record Found'}} || {{ $store_name->owner_name ?? 'No Record Found'}}
+                                            </td>
                                             <td>{{ $user->phone}}</td>
                                             <td>
                                                 <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>

@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','phone',
+        'name', 'email', 'password','phone','store_id',
     ];
 
     /**
@@ -41,8 +41,8 @@ class User extends Authenticatable
     // {
     //     return $this->hasOne('App\Store','phone','id');
     // }
-    public function get_store_name(){
-        return $this->belongsTo('App\store','store_id', 'id');
-    }
+    // public function get_store_name(){
+    //     return $this->belongsTo('App\store','store_id', 'id');
+    // }
 
 }
