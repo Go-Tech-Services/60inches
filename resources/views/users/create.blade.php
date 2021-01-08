@@ -62,6 +62,16 @@
                                             </span>
                                         @endif
                                     </div>
+                                    <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="input-email">{{ __('Phone Number') }}</label>
+                                        <input type="text" name="phone" id="phone_val" class="form-control form-control-alternative{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('Phone Number') }}" value="{{ old('phone') }}" required>
+
+                                        @if ($errors->has('phone'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('phone') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
                                     <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="input-password">{{ __('Password') }}</label>
                                         <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="" required>

@@ -19,9 +19,10 @@ class Store extends Model
     protected $fillable = [
         'id','owner_name','store_name','store_address','email','phone','store_logo','created_by','updated_by'
     ];
-    public function user()
-    {
-        return $this->belongsTo('App\User');
+    
+    public function get_users(){
+        return $this->hasMany('App\User', 'store_id', 'id');
     }
+
     
 }

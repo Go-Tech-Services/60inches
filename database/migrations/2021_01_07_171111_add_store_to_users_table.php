@@ -16,7 +16,7 @@ class AddStoreToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
             
-            $table->string('store')->nullable();
+            $table->string('store_id')->nullable();
 
         });
     }

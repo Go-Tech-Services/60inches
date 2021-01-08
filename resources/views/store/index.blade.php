@@ -44,7 +44,7 @@
   </script>
    </body>
    </html> -->
-<!--     
+    
 @section('content')
     <div class="content">
         <div class="container-fluid mt--7">
@@ -89,10 +89,10 @@
                                         <tr>
                                             <td>{{ $store->store_name }}</td>
                                             <td>
-                                                {{ $store->phone }}</a>
+                                                {{ $store->owner_name }}</a>
                                             </td>
                                             <td>
-                                                {{ $store->owner_name }}</a>
+                                                {{ $store->phone }}</a>
                                             </td>
                                             <td>{{ $store->created_at->format('d/m/Y H:i') }}</td>
                                             <td class="text-right">
@@ -115,4 +115,4 @@
             </div>
         </div>
     </div>
-@endsection -->
+@endsection

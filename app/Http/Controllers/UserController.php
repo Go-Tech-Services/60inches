@@ -28,6 +28,12 @@ class UserController extends Controller
      */
     public function create()
     {
+
+        // $get_store_name -> create([
+        //     'store_id' => $store_id,
+        
+        // ]);
+    
         $storelist = Store::all();
         // dd($storelist);
         return view('users.create', compact(

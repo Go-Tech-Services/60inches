@@ -37,8 +37,12 @@ class User extends Authenticatable
     protected $casts = [
         'phone_verified_at' => 'datetime',
     ];
-    public function store()
-    {
-        return $this->hasOne('App\Store','phone','id');
+    // public function store()
+    // {
+    //     return $this->hasOne('App\Store','phone','id');
+    // }
+    public function get_store_name(){
+        return $this->belongsTo('App\store','store_id', 'id');
     }
+
 }

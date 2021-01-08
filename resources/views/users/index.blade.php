@@ -36,6 +36,8 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">{{ __('Name') }}</th>
+                                        <th scope="col">{{ __('Store Name') }}</th>
+                                        <th scope="col">{{ __('Phone') }}</th>
                                         <th scope="col">{{ __('Email') }}</th>
                                         <th scope="col">{{ __('Creation Date') }}</th>
                                         <th scope="col"></th>
@@ -45,6 +47,8 @@
                                     @foreach ($users as $user)
                                         <tr>
                                             <td>{{ $user->name }}</td>
+                                            <td>{{ $user->get_store_name}}</td>
+                                            <td>{{ $user->phone}}</td>
                                             <td>
                                                 <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
                                             </td>
