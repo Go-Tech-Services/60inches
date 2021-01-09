@@ -69,8 +69,18 @@ class StoreController extends Controller
         $store->url= str_slug($request->get('store_name'), "-");
         $store->save();
     
-        return redirect()->route('store.index')->withStatus(__('Store successfully created.'));
-        
+        // return redirect()->route('store.index')->withStatus(__('Store successfully created.'));
+
+    }
+    public function edit(store $store)
+    {
+        return view('store.edit', compact('store'));
+    }
+    public function destroy(store  $store)
+    {
+        $store->delete();
+
+        return redirect()->route('store.index')->withStatus(__('User successfully deleted.'));
     }
 
 }

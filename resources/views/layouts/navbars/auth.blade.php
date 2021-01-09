@@ -23,6 +23,12 @@
                     <p>{{ __('Store') }}</p>
                 </a>
             </li>
+            <li class="{{ $elementActive == 'Client' ? 'active' : '' }}">
+                <a href="{{ route('client.create') }}">
+                    <i class="nc-icon nc-circle-10"></i>
+                    <p>{{ __('client Creation') }}</p>
+                </a>
+            </li>
             <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">
                 <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples">
                     <i class="nc-icon"><img src="{{ asset('paper/img/laravel.svg') }}"></i>

@@ -7,7 +7,8 @@
 <script src="/jobs/public/js/jquery.form.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
 <script src="/jobs/public/js/jquery-ui-1.10.3.custom/js/jquery-1.9.1.js"></script>
 <script src="{{ asset('js/sem-ui/jquery.min.js') }}"></script>
@@ -100,6 +101,11 @@
         maxlength: 50,
         email: true,
         },
+        phone: {
+        required: true,
+        maxlength: 50,
+        phone: true,
+        },
         password: {
         required: true,
         minlength: 8,
@@ -110,6 +116,10 @@
             email: {
             required: "Please enter valid email",
             email: "Please enter valid email",
+            },
+            phone: {
+            required: "Please enter valid phone number",
+            phone: "Please enter valid phone number",
             },
             password:{
                 required: "Please enter password",
@@ -148,7 +158,7 @@
   });
 }
 })
-}
+
 
      jQuery(document).ready(function() {
         demo.checkFullPageBackgroundImage();
