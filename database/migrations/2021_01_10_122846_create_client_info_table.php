@@ -16,13 +16,13 @@ class CreateClientInfoTable extends Migration
         Schema::create('client_info', function (Blueprint $table) {
             $table->bigIncrements('id')->index();
             $table->string('client_name');
-            $table->string('phone')->index('phone')->unique();
-            $table->string('altern_phone');  
-            $table->string('email');
-            $table->date('birth_date');
-            $table->text('client_address');
-            $table->text('client_city');
-            $table->text('pin_code');
+            $table->string('client_phone')->index('client_phone')->unique();
+            $table->string('altern_phone')->nullable();  
+            $table->string('email')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->text('client_address')->nullable();
+            $table->text('client_city')->nullable();
+            $table->text('pin_code')->nullable();
             $table->string('url')->index('url')->nullable();
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();

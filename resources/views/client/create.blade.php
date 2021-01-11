@@ -2,7 +2,8 @@
     'class' => '',
     'elementActive' => 'client',
 ])
- 
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 @section('content')
 <div class="content">
     <div class="container-fluid mt--7">
@@ -34,7 +35,7 @@
 
                                 <div class="form-group" id="client_phone">
                                     <label class="form-control-label" for="client_phone">{{ __('Mobile Number') }}</label>
-                                    <input type="text" name="phone" id="client_phone_val" class="form-control form-control-alternative{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('Mobile Number') }}" value="{{ old('phone') }}">
+                                    <input type="text" name="client_phone" id="client_phone_val" class="form-control form-control-alternative{{ $errors->has('client_phone') ? ' is-invalid' : '' }}" placeholder="{{ __('Mobile Number') }}" value="{{ old('client_phone') }}">
                                 </div>
 
                                 <div class="form-group" id="altern_phone">
@@ -44,7 +45,7 @@
 
                                 <div class="form-group" id="email" >
                                     <label class="form-control-label" for="email">{{ __('Email') }}</label>
-                                    <input type="text" name="email" id="email_val"  class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email') }}">
+                                    <input type="email" name="email" id="email_val"  class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email') }}">
                                 </div>
 
                                 <div class="form-group" id="birth_date">
@@ -80,4 +81,113 @@
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script type="text/javascript">
+    $( document ).ready(function() { 
+       console.log('Client Blade');
+        $("#submit").click(function(e) {
+            e.preventDefault();
+
+            var client_name = $('#client_name_val').val();
+            var client_phone = $('#client_phone_val').val();
+            var altern_phone = $('#altern_phone_val').val();
+            var email = $('#email_val').val();
+            var birth_date = $('#birth_date_val').val();
+            var client_address = $('#client_address_val').val();
+            var client_city = $('#client_city_val').val();
+            var pin_code = $('#pin_code_val').val();
+        
+        $.ajax({
+          url: "{{ url('/client/store') }}",
+          type:"POST",
+          data:{
+            "_token": "{{ csrf_token() }}",
+            client_name:client_name, 
+            client_phone:client_phone, 
+            altern_phone:altern_phone,  
+            email:email, 
+            birth_date:birth_date, 
+            client_address:client_address, 
+            client_city:client_city,
+            pin_code:pin_code
+          },
+          success:function(response){
+            console.log(response);
+            window.location.href = "{{ route('client.index')}}";
+            
+          },
+          error:function(error){
+                $('#validation-errors').html('');
+                $.each(error.responseJSON.errors, function(key,value) {
+                    console.log(key+value);
+                    if ( key == 'client_name' ) {
+                        $('#client_name').append("<span class='alert alert-danger'><strong>"+value+"</strong></span>");
+                    }
+                    if( key == 'client_phone') {
+                        $('#client_phone').append("<span class='alert alert-danger'><strong>"+value+"</strong></span>");
+                    }
+                    if( key == 'altern_phone' ) {
+                        $('#altern_phone').append("<span class='alert alert-danger'<strong>"+value+"</strong></span>");
+                    }
+                    if( key == 'email' ) {
+                        $('#email').append("<span class='alert alert-danger'><strong>"+value+"</strong></span>");
+                    }
+                    if( key == 'birth_date' ) {
+                        $('#birth_date').append("<span class='alert alert-danger'><strong>"+value+"</strong></span>");
+                    }
+                    if( key == 'client_address' ) {
+                        $('#client_address').append("<span class='alert alert-danger'><strong>"+value+"</strong></span>");
+                    }
+                    if( key == 'client_city' ) {
+                        $('#client_city').append("<span class='alert alert-danger'><strong>"+value+"</strong></span>");
+                    }
+                    if( key == 'pin_code' ) {
+                        $('#pin_code').append("<span class='alert alert-danger'><strong>"+value+"</strong></span>");
+                    }
+                
+                }); 
+          }
+         });
+        });
+   });
+   </script>
+
+<!--  validation script  -->
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.0/jquery.validate.min.js"></script>
+ 
+<!--  jsrender script  -->
+<script src="http://cdn.syncfusion.com/js/assets/external/jsrender.min.js"></script>
+ 
+<!-- Essential JS UI widget -->
+<script src="http://cdn.syncfusion.com/16.4.0.52/js/web/ej.web.all.min.js"></script>
+ 
+<!--Add custom scripts here --> 
+
+
+
+<!-- <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        console.log( "Client Create Blade!" );
+               
+                jQuery.ajax({
+                    url: "{{  route('client.store') }}" ,
+                    type: "POST",
+                    data: jQuery('#client').serialize(),
+                    headers: {
+                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function( response ) {
+                        console.log('response');
+                        console.log(response);
+                    },
+                    error: function ( err ){
+                        console.log('err');
+                        console.log(err);
+                    }
+                });
+        
+    });
+</script>  -->
 @endsection
+   

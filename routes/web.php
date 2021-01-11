@@ -46,11 +46,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::resource('store', 'StoreController');
 	Route::post('/store/store', 'StoreController@store');
-
-	Route::resource('client', 'ClientController');
-
 	Route::get('{page}', ['as' => 'page.index', 'uses' => 'PageController@index']);
+	 
 	Route::resource('client', 'ClientController');
+	Route::post('/client/store', 'ClientController@store');
 
 });
 
