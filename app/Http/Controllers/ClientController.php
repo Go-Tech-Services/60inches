@@ -10,9 +10,9 @@ class ClientController extends Controller
 {
     public function index(Request $request)
     {
-        dd('hello');
-        $clients = Clients::all();
-        return view('client.index'); ['clients' => $clients];
+       
+        $clients = Client::all();
+        return view('client.index',['clients' => $clients]);
     }
     public function create()
     {
@@ -20,16 +20,16 @@ class ClientController extends Controller
     }  
     public function store(Request $request)
     {
-       // dd('$client');
+        // dd($request);
         $request->validate([
         'client_name' => 'required',
         'client_phone' => 'required', 
         // 'altern_phone' => 'required',
         // 'email' => 'required',
-        'birth_date' => 'date_format:m/d/Y|before:today',
+        'birth_date' => 'nullable|date_format:m/d/Y|before:today',
         // 'client_address' => 'required',
         'client_city' => 'max:20',
-        'pin_code' => 'digits:6',
+        'pin_code' => 'nullable|digits:6',
         
         ]);
 
@@ -38,7 +38,9 @@ class ClientController extends Controller
         $client->client_phone = $request->get('client_phone');
         $client->altern_phone = $request->get('altern_phone');
         $client->email = $request->get('email');
-        $client->birth_date = $request->get('birth_datebirth_date');
+       // $client->birth_date = $request->get('birth_date');
+        $date = date('Y-m-d', strtotime( $request->get('birth_date')));
+        $client->birth_date = $date;
         $client->client_address = $request->get('client_address');
         $client->client_city = $request->get('client_city');
         $client->pin_code = $request->get('pin_code');
@@ -47,7 +49,7 @@ class ClientController extends Controller
         $client->url= str_slug($request->get('client_name'), "-");
         $client->save();
 
-        return redirect()->route('client.index')->withStatus(__('User successfully created.'));
+        return redirect('client/index')->withStatus(__('User successfully created.'));
 
     }
 }

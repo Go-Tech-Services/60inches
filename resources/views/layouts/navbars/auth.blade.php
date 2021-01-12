@@ -18,13 +18,13 @@
                 </a>
             </li>
             <li class="{{ $elementActive == 'Store' ? 'active' : '' }}">
-                <a href="{{ route('store.create') }}">
+                <a href="{{ route('store.index') }}">
                     <i class="nc-icon nc-shop"></i>
                     <p>{{ __('Store') }}</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'Client' ? 'active' : '' }}">
-                <a href="{{ route('client.create') }}">
+                <a href="{{ url('client/index') }}">
                     <i class="nc-icon nc-circle-10"></i>
                     <p>{{ __('client Creation') }}</p>
                 </a>

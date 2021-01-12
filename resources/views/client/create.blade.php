@@ -16,13 +16,13 @@
                                 <h3 class="mb-0">{{ __('New Customer') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('client.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                                <a href="{{ url('client/index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form autocomplete="off" id="client" enctype="multipart/form-data">
-                            {{-- method="post" action="{{ route('client.store') }}"  --}}
+                        <form  id="client" enctype="multipart/form-data">
+                           
                             @csrf
         
                             <h6 class="heading-small text-muted mb-4">{{ __('Client information') }}</h6>
@@ -65,7 +65,7 @@
 
                                 <div class="form-group" id="pin_code">
                                     <label class="form-control-label" for="pin_code">{{ __('Pincode') }}</label>
-                                    <input type="text" name="pin_code" id="client_address_val"  class="form-control form-control-alternative{{ $errors->has('pin_code') ? ' is-invalid' : '' }}" placeholder="{{ __('PinCode') }}" value="{{ old('pin_code') }}">
+                                    <input type="text" pattern="[1-9][0-9]{5}" name="pin_code" id="pin_code_val"  class="form-control form-control-alternative{{ $errors->has('pin_code') ? ' is-invalid' : '' }}" placeholder="{{ __('PinCode') }}" value="{{ old('pin_code') }}">
                                 </div>
                                 
                                 <div class="text-center">
@@ -85,9 +85,10 @@
 <script type="text/javascript">
     $( document ).ready(function() { 
        console.log('Client Blade');
+       
         $("#submit").click(function(e) {
             e.preventDefault();
-
+           
             var client_name = $('#client_name_val').val();
             var client_phone = $('#client_phone_val').val();
             var altern_phone = $('#altern_phone_val').val();
@@ -96,8 +97,9 @@
             var client_address = $('#client_address_val').val();
             var client_city = $('#client_city_val').val();
             var pin_code = $('#pin_code_val').val();
-        
-        $.ajax({
+            console.log('Name:'+client_name+'Phone:'+client_phone+'altphone:'+altern_phone+'bd:'+birth_date+'pincode:'+pin_code);
+      
+   $.ajax({
           url: "{{ url('/client/store') }}",
           type:"POST",
           data:{
@@ -113,7 +115,8 @@
           },
           success:function(response){
             console.log(response);
-            window.location.href = "{{ route('client.index')}}";
+            alert('submit');
+            window.location.href = "{{ url('client/index')}}";
             
           },
           error:function(error){
@@ -146,11 +149,11 @@
                     }
                 
                 }); 
-          }
-         });
+            }      
         });
-   });
-   </script>
+    });
+});
+</script>
 
 <!--  validation script  -->
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.0/jquery.validate.min.js"></script>
@@ -160,34 +163,6 @@
  
 <!-- Essential JS UI widget -->
 <script src="http://cdn.syncfusion.com/16.4.0.52/js/web/ej.web.all.min.js"></script>
- 
-<!--Add custom scripts here --> 
 
-
-
-<!-- <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        console.log( "Client Create Blade!" );
-               
-                jQuery.ajax({
-                    url: "{{  route('client.store') }}" ,
-                    type: "POST",
-                    data: jQuery('#client').serialize(),
-                    headers: {
-                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function( response ) {
-                        console.log('response');
-                        console.log(response);
-                    },
-                    error: function ( err ){
-                        console.log('err');
-                        console.log(err);
-                    }
-                });
-        
-    });
-</script>  -->
 @endsection
    

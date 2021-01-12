@@ -15,7 +15,7 @@
                                     <h3 class="mb-0">{{ __('Client') }}</h3>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <a href="{{ route('client.create') }}" class="btn btn-sm btn-primary">{{ __('Add Customer') }}</a>
+                                    <a href="{{ url('client/create') }}" class="btn btn-sm btn-primary">{{ __('Add Customer') }}</a>
                                 </div>
                             </div>
                          </div>
@@ -42,39 +42,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                     @foreach ($client as $client)
+                                     @foreach ($clients as $client)
                                         <tr>
-                                            <td>{{ $client->store_name }}</td>
+                                            <td>{{ $client->client_name }}</td>
                                             <td>
-                                                {{ $client->phone }}</a>
+                                                {{ $client->client_phone }}</a>
                                             </td>
                                             <td>{{ $client->created_at->format('d/m/Y H:i') }}</td>
-                                            <td class="text-right">
-                                                <div class="dropdown">
-                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="nc-align-left-2 nc-icon"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                    @if ($client->id != auth()->id())
-                                                            <form action="{{ route('client.destroy', $client) }}" method="post">
-                                                                @csrf
-                                                                @method('delete')
-                                                                
-                                                                <a class="dropdown-item" href="{{ route('client.edit', $client) }}">{{ __('Edit') }}</a>
-                                                                <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
-                                                                    {{ __('Delete') }}
-                                                                </button>
-                                                            </form>    
-                                                        @else
-                                                            <a class="dropdown-item" href="{{ route('client.edit') }}">{{ __('Edit') }}</a>
-                                                        @endif 
-                                                    </div>
-                                                </div>
-                                            </td>
+                                            
                                         </tr>
                                     @endforeach
-                                </tbody>
-                            </table>
+                                </tbody>                            </table>
                         </div>
                     </div>
                 </div>
