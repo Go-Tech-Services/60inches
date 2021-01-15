@@ -12,7 +12,7 @@
                         <div class="card-header border-0">
                             <div class="row align-items-center">
                                 <div class="col-8">
-                                    <h3 class="mb-0">{{ __('Client') }}</h3>
+                                    <h3 class="mb-0">{{ __('My Clients') }}</h3>
                                 </div>
                                 <div class="col-4 text-right">
                                     <a href="{{ url('client/create') }}" class="btn btn-sm btn-primary">{{ __('Add Customer') }}</a>
@@ -35,28 +35,49 @@
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
                                     <tr>
+                                        <th scope="col">{{ __('Sr.no.') }}</th>
                                         <th scope="col">{{ __('client Name') }}</th>
+                                        <th scope="col">{{ __('Store Name') }}</th>
                                         <th scope="col">{{ __('Phone') }}</th>
+                                        <th scope="col">{{ __('Email Id') }}</th>
                                         <th scope="col">{{ __('Creation Date') }}</th>
+                                        <th scope="col">{{ __('Action') }}</th>
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                      @foreach ($clients as $client)
                                         <tr>
+                                            <td>{{ $client->id }}</td>
                                             <td>{{ $client->client_name }}</td>
+
+                                            <td>
+                                                @php
+                                                    $store_name = \DB::table('store_info')->where('id',$client->store_id)->first();
+                                                @endphp
+                                                {{ $store_name->store_name ?? 'No Record Found'}} || {{ $store_name->owner_name ?? 'No Record Found'}}
+                                            </td>
+
                                             <td>
                                                 {{ $client->client_phone }}</a>
                                             </td>
+                                            <td>
+                                                {{ $client->email }}</a>
+                                            </td>
                                             <td>{{ $client->created_at->format('d/m/Y H:i') }}</td>
-                                            
+                                            <td>
+                                            <a href="{{ url('client/view', $client)}}"  class="edit-modal btn btn-info">View</a>
+                                            </td>
                                         </tr>
                                     @endforeach
-                                </tbody>                            </table>
+                                </tbody> 
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+   
 @endsection

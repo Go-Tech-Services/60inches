@@ -47,15 +47,6 @@ class StoreController extends Controller
 
         ]);
        
-        // $profileImage = '';
-        // if ($request->store_logo) {
-        //     $files = $request->store_logo;
-        //     $destinationPath = 'public/image/'; // upload path
-        //     $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
-        //     $files->move($destinationPath, $profileImage);
-        // }
-        // dd($profileImage);
-        // $project = Store::create($data);
         $store = new Store();
         $store->owner_name = $request->get('owner_name');
         $store->store_name = $request->get('store_name');	

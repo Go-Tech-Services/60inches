@@ -52,6 +52,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/client/store', 'ClientController@store');
 	Route::get('/client/index', 'ClientController@index');
 	Route::get('/client/create', 'ClientController@create');
+	Route::get('/client/view', 'ClientController@view');
+	Route::put('client/view', ['as' => 'profile.update', 'uses' => 'ClientController@view']);
+
+	
 
 });
 

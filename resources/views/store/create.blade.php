@@ -141,17 +141,12 @@
                     }if( key == 'store_logo' ) {
                         $('#store_logo').append("<span class='alert alert-danger'><strong>"+value+"</strong></span>");
                     }
-                    // $('#validation-errors').append('<div class="alert alert-danger">'+value+'</div');
+                
                 }); 
           }
          });
         });
    });
-    // $('#submit').on('click',function(event){
-    //     event.preventDefault();
-
-    
-    //     });
       </script>
 {{-- <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script> --}}
 <!--  jquery script  -->
@@ -173,54 +168,7 @@
 <script type="text/javascript">
     jQuery(document).ready(function() {
         console.log( "Store Create Blade!" );
-        
-    //    jQuery("#store").validate({
-    //         rules: {
-    //             owner_name: {
-    //                 required:true
-    //             },
-    //             store_name: {
-    //                 required:true
-    //             },
-    //             email: {
-    //                 required:true
-    //             },
-    //             store_address: {
-    //                 required:true
-    //             },
-    //             phone: {
-    //                 required:true
-    //             },
-    //             store_logo: {
-    //                 required:true
-    //             }
-    //         },
-    //         messages: {
-    //             owner_name: {
-    //                 required: "Please Enter Name",
-    //             },
-    //             store_name: {
-    //                 required: "Please Enter Store Name",
-    //             },
-    //             email: {
-    //                 required: "Please Enter Email",
-    //             },
-    //             store_address: {
-    //                 required: "Please Enter Store Address",
-    //             },
-    //             phone: {
-    //                 required: "Please Enter Phone",
-    //             },
-    //             store_logo: {
-    //                 required: "Please Enter Phone",
-    //             },
-    //         },
-    //         submitHandler: function(form) {
-    //             $.ajaxSetup({
-                    
-    //             });
-                // jQuery('#store-button').html('Sending..');
-                jQuery.ajax({
+        jQuery.ajax({
                     url: "{{ route('store.store') }}" ,
                     type: "POST",
                     data: jQuery('#store').serialize(),
@@ -230,24 +178,13 @@
                     success: function( response ) {
                         console.log('response');
                         console.log(response);
-                        //   jQuery('#store-button').html('Submit');
-                        //   jQuery('#res_message').show();
-                        //   jQuery('#res_message').html(response.msg);
-                        //   jQuery('#msg_div').removeClass('d-none');
-            
-                        //   document.getElementById("store-form").reset(); 
-                        //   setTimeout(function(){
-                        //   jQuery('#res_message').hide();                                                                                                                             
-                        //   jQuery('#msg_div').hide();
-                        //   },10000);
                     },
                     error: function ( err ){
                         console.log('err');
                         console.log(err);
                     }
                 });
-        //     }
-        // });
+
     });
 </script> --}}
 {{-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>

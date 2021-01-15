@@ -33,6 +33,23 @@
                                     <input type="text" name="client_name" id="client_name_val"  class="form-control form-control-alternative{{ $errors->has('client_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Client Name') }}" value="{{ old('client_name') }}">
                                 </div>
 
+                                <div class="form-group{{ $errors->has('store') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="input-store">{{ __('Select Store Name') }}</label>
+                                        <select class="custom-select" id="store_id" name="store_id">
+                                            <option selected>Open this select menu to select store</option>
+                                            @foreach ($storelist as $store)
+                                                <option value="{{$store->id}}">{{$store->store_name}}||({{$store->owner_name}})</option>
+                                            @endforeach
+                                            {{-- <option value="2">Two</option>
+                                            <option value="3">Three</option> --}}
+                                        </select>
+                                        @if ($errors->has('store'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('store') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
                                 <div class="form-group" id="client_phone">
                                     <label class="form-control-label" for="client_phone">{{ __('Mobile Number') }}</label>
                                     <input type="text" name="client_phone" id="client_phone_val" class="form-control form-control-alternative{{ $errors->has('client_phone') ? ' is-invalid' : '' }}" placeholder="{{ __('Mobile Number') }}" value="{{ old('client_phone') }}">
@@ -90,6 +107,7 @@
             e.preventDefault();
            
             var client_name = $('#client_name_val').val();
+            var store_id = $('#store_id').val();
             var client_phone = $('#client_phone_val').val();
             var altern_phone = $('#altern_phone_val').val();
             var email = $('#email_val').val();
@@ -97,7 +115,7 @@
             var client_address = $('#client_address_val').val();
             var client_city = $('#client_city_val').val();
             var pin_code = $('#pin_code_val').val();
-            console.log('Name:'+client_name+'Phone:'+client_phone+'altphone:'+altern_phone+'bd:'+birth_date+'pincode:'+pin_code);
+            console.log('Name:'+client_name+'storename:'+store_id+'Phone:'+client_phone+'altphone:'+altern_phone+'bd:'+birth_date+'pincode:'+pin_code);
       
    $.ajax({
           url: "{{ url('/client/store') }}",
@@ -105,6 +123,7 @@
           data:{
             "_token": "{{ csrf_token() }}",
             client_name:client_name, 
+            store_id:store_id,
             client_phone:client_phone, 
             altern_phone:altern_phone,  
             email:email, 
@@ -125,6 +144,9 @@
                     console.log(key+value);
                     if ( key == 'client_name' ) {
                         $('#client_name').append("<span class='alert alert-danger'><strong>"+value+"</strong></span>");
+                    }
+                    if( key == 'store_id') {
+                        $('#store_id').append("<span class='alert alert-danger'><strong>"+value+"</strong></span>");
                     }
                     if( key == 'client_phone') {
                         $('#client_phone').append("<span class='alert alert-danger'><strong>"+value+"</strong></span>");
