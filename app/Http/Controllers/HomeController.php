@@ -23,4 +23,8 @@ class HomeController extends Controller
     {
         return view('pages.dashboard');
     }
+    public function invisiblecaptcha()
+    {
+        return view('invisiblecaptcha');
+    }
 }

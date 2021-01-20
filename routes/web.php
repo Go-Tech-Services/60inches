@@ -14,14 +14,29 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Auth::routes();
 Auth::routes(['register' => false]);
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//  Route::get('/store', 'StoreController@index');
+// Route::get('/store', 'StoreController@create');
+// Route::resource('store', 'StoreController');
+// Route::post('/store/store', 'StoreController@store');
+Route::get('/user',function()  
+{  
+  return User::find(store_id)->Store;  
+}  
+);  
+Route::get('/store',function()  
+{  
+  return Store::find(id)->User;  
+}  
+); 
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::get('firebase-phone-authentication', 'HomeController@invisiblecaptcha')->name('invisiblecaptcha');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
@@ -29,12 +44,23 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 
-
-
-});
-
-Route::group(['middleware' => 'auth'], function () {
+	Route::resource('store', 'StoreController');
+	Route::post('/store/store', 'StoreController@store');
 	Route::get('{page}', ['as' => 'page.index', 'uses' => 'PageController@index']);
+	 
+	// Route::resource('client', 'ClientController');
+	Route::post('/client/store', 'ClientController@store');
+	Route::get('/client/index', 'ClientController@index');
+	Route::get('/client/create', 'ClientController@create');
+	Route::get('/client/view', 'ClientController@view');
+	Route::put('client/view/{id}', ['as' => 'profile.update', 'uses' => 'ClientController@view']);
+	
+
+	
+
 });
+
+
+
 
 

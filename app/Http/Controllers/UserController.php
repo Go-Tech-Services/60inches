@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\StoreController;
+use App\Store;
 
 class UserController extends Controller
 {
@@ -26,7 +28,18 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+
+        // $get_store_name -> create([
+        //     'store_id' => $store_id,
+        
+        // ]);
+    
+        $storelist = Store::all();
+        // dd($storelist);
+        return view('users.create', compact(
+                'storelist'
+            )
+        );
     }
 
     /**
@@ -38,6 +51,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $request, User $model)
     {
+        // dd($request);
         $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
 
         return redirect()->route('user.index')->withStatus(__('User successfully created.'));

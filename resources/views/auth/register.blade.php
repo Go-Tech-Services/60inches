@@ -75,6 +75,19 @@
                                         </span>
                                     @endif
                                 </div>
+                                <div class="input-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="nc-icon nc-email-85"></i>
+                                        </span>
+                                    </div>
+                                    <input name="phone" type="text" class="form-control" placeholder="Phone" required value="{{ old('phone') }}">
+                                    @if ($errors->has('phone'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('phone') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
                                 <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
