@@ -27,17 +27,17 @@ class LoginController extends Controller
      * @var string
      */
 
-    // protected function authenticated(Request $request, $user) {
-    //   dd('djdsgjds');
-      // if ($user->role_id == 1) {
-      //   return redirect('/admin');
-      // } else if ($user->role_id == 2) {
-      //   return redirect('/author');
-      // } else {
-      //   return redirect('/blog');
-      // }
-//    }
-   
+    protected function authenticated(Request $request, $user) {
+    //   dd($user);
+    //   if ($user->role_id == 1) {
+    //     return redirect('/admin');
+    //   } else if ($user->role_id == 2) {
+    //     return redirect('/author');
+    //   } else {
+    //     return redirect('/blog');
+    //   }
+   }
+
 
      protected $redirectTo = '/home';
 
@@ -58,5 +58,5 @@ class LoginController extends Controller
       elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
         return ['email' => $request->get('email'), 'password'=>$request->get('password')];
       }
-  }   
+  }
 }
