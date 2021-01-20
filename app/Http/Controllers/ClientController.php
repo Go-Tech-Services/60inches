@@ -8,6 +8,7 @@ use App\Client;
 use App\Http\Controllers\StoreController;
 use App\Store;
 
+
 class ClientController extends Controller
 {
     public function index(Request $request)
@@ -41,6 +42,7 @@ class ClientController extends Controller
         // 'client_address' => 'required',
         'client_city' => 'max:20',
         'pin_code' => 'nullable|digits:6',
+        'gender'=> 'required',
         
         ]);
 
@@ -50,6 +52,7 @@ class ClientController extends Controller
         $client->altern_phone = $request->get('altern_phone');
         $client->store_id = $request->get('store_id');
 
+        $client->gender = $request->get('gender');
 
         $client->email = $request->get('email');
        // $client->birth_date = $request->get('birth_date');
@@ -68,7 +71,8 @@ class ClientController extends Controller
     }
     public function view(client $client)
     {
-        
+        // $client = Client::find($client_name);
+        $clients = Client::all();
         return view('client.view', compact('client'));
 
     }

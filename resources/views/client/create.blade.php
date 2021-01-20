@@ -65,6 +65,21 @@
                                     <input type="email" name="email" id="email_val"  class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email') }}">
                                 </div>
 
+                                <div class="form-group{{ $errors->has('gender') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="gender">{{ __('Gender') }}</label>
+                                <select class="custom-select" id="gender" name="gender">
+                                    <option selected>Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                                     @if ($errors->has('gender'))
+                                         <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('gender') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+                                    
+
                                 <div class="form-group" id="birth_date">
                                     <label class="form-control-label" for="birth_date">{{ __('Date Of Birth') }}</label>
                                     <input type="text" name="birth_date" id="birth_date_val"  class="form-control form-control-alternative{{ $errors->has('birth_date') ? ' is-invalid' : '' }}" placeholder="{{ __('Date Of Birth') }}" value="{{ old('birth_date') }}">
@@ -115,7 +130,8 @@
             var client_address = $('#client_address_val').val();
             var client_city = $('#client_city_val').val();
             var pin_code = $('#pin_code_val').val();
-            console.log('Name:'+client_name+'storename:'+store_id+'Phone:'+client_phone+'altphone:'+altern_phone+'bd:'+birth_date+'pincode:'+pin_code);
+            var gender = $('#gender').val();
+            console.log('Name:'+client_name+'storename:'+store_id+'Phone:'+client_phone+'altphone:'+altern_phone+'gender:'+gender+'bd:'+birth_date+'pincode:'+pin_code);
       
    $.ajax({
           url: "{{ url('/client/store') }}",
@@ -126,7 +142,8 @@
             store_id:store_id,
             client_phone:client_phone, 
             altern_phone:altern_phone,  
-            email:email, 
+            email:email,
+            gender:gender, 
             birth_date:birth_date, 
             client_address:client_address, 
             client_city:client_city,
