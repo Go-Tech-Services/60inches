@@ -9,11 +9,15 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "doctrine/dbal": "^3.0",
         "fideloper/proxy": "^4.0",
+        "kreait/firebase-php": "^5.14",
         "laravel-frontend-presets/paper": "^1.0",
         "laravel/framework": "^6.0",
+        "laravel/helpers": "^1.4",
         "laravel/tinker": "^1.0",
-        "laravel/ui": "^1.0"
+        "laravel/ui": "^1.0",
+        "yajra/laravel-datatables-oracle": "^9.15"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
