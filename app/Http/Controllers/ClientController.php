@@ -143,7 +143,61 @@ class ClientController extends Controller
             return redirect('/client/index')->withStatus(__('User successfully deleted.'));
         }
 
+        public function measurementStore(Request $request)
+        {
+             $request->validate([
+               
+             ]);
     
+            $measurement = new Measurements();
+            $measurement->client_id = $request->get('client_id');
+            $measurement->neck = $request->get('neck'); 
+            $measurement->shoulder = $request->get('shoulder');
+            $measurement->upper_bust = $request->get('upper_bust');
+            $measurement->bust = $request->get('bust');
+            $measurement->cup = $request->get('cup');
+            $measurement->under_bust = $request->get('under_bust');
+            $measurement->upper_waist = $request->get('upper_waist');
+            $measurement->hips = $request->get('hips');
+            $measurement->knee = $request->get('knee');
+            $measurement->ankle = $request->get('ankle');
+            $measurement->thigh_round = $request->get('thigh_round');
+            $measurement->calf_round = $request->get('calf_round');
+            $measurement->dark_point = $request->get('dark_point');
+            $measurement->fork = $request->get('fork');
+            $measurement->shoe_size = $request->get('shoe_size');
+            $measurement->save();
+                
+            return redirect('client/view')->withStatus(__(''));
+    
+        }
+    
+        public function measurementUpdate(Request $request)
+        {
+            
+            $ $id = $request->id;
+            $measurement = Measurements::find($id);
+            $measurement->client_id = $request->get('client_id');
+            $measurement->neck = $request->get('neck'); 
+            $measurement->shoulder = $request->get('shoulder');
+            $measurement->upper_bust = $request->get('upper_bust');
+            $measurement->bust = $request->get('bust');
+            $measurement->cup = $request->get('cup');
+            $measurement->under_bust = $request->get('under_bust');
+            $measurement->upper_waist = $request->get('upper_waist');
+            $measurement->hips = $request->get('hips');
+            $measurement->knee = $request->get('knee');
+            $measurement->ankle = $request->get('ankle');
+            $measurement->thigh_round = $request->get('thigh_round');
+            $measurement->calf_round = $request->get('calf_round');
+            $measurement->dark_point = $request->get('dark_point');
+            $measurement->fork = $request->get('fork');
+            $measurement->shoe_size = $request->get('shoe_size');
+            $measurement->save();
+                
+            return redirect('client/view/{id}')->withStatus(__(''));
+    
+        }
    
 
 
