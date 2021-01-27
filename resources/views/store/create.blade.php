@@ -36,7 +36,7 @@
                             <div class="pl-lg-4">
 
                                 <div class="form-group" id="store_name">
-                                    <label class="form-control-label" for="store_nam">{{ __('Store Name') }}</label>
+                                    <label class="form-control-label" for="store_name">{{ __('Store Name') }}</label>
                                     <input type="text" name="store_name" id="store_name_val"  class="form-control form-control-alternative{{ $errors->has('store_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Store Name') }}" value="{{ old('store_name') }}">
                                 </div>
 
@@ -79,6 +79,22 @@
                                 </div>
                                 <div id="store_logo">
                                 </div>
+
+                                <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="input-password">{{ __('Password') }}</label>
+                                        <input type="password" name="password" id="password_val" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="" required>
+                                        
+                                        @if ($errors->has('password'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('password') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-password-confirmation">{{ __('Confirm Password') }}</label>
+                                        <input type="password" name="password_confirmation" id="password-confirmation_val" class="form-control form-control-alternative" placeholder="{{ __('Confirm Password') }}" value="" required>
+                                    </div>
+
                                 <div class="text-center">
                                     <button id="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
                                 </div>
@@ -103,6 +119,8 @@
             var phone = $('#phone_val').val();
             var store_address = $('#store_address_val').val();
             var store_logo = $('#store_logo_val').val();
+            var password = $('#password_val').val();
+          //  var password_confirmation = $('#password-confirmation_val').val();
         console.log(owner_name);
         console.log(email);
         $.ajax({
@@ -115,7 +133,10 @@
             store_name:store_name,
             phone:phone,
             store_address:store_address,
-            store_logo:store_logo
+            store_logo:store_logo,
+            password:password,
+            // password_confirmation:password_confirmation
+
           },
           success:function(response){
             console.log(response);
@@ -140,7 +161,12 @@
                         $('#phone').append("<span class='alert alert-danger'><strong>"+value+"</strong></span>");
                     }if( key == 'store_logo' ) {
                         $('#store_logo').append("<span class='alert alert-danger'><strong>"+value+"</strong></span>");
+                    }if( key == ' password' ) {
+                        $('#password').append("<span class='alert alert-danger'><strong>"+value+"</strong></span>");
+                    // }if( key == 'password_confirmation' ) {
+                    //     $('#password_confirmation').append("<span class='alert alert-danger'><strong>"+value+"</strong></span>");
                     }
+                              
                 
                 }); 
           }
@@ -163,34 +189,5 @@
 <!--Add custom scripts here --> --}}
 {{--  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script> --}}
 
-{{-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        console.log( "Store Create Blade!" );
-        jQuery.ajax({
-                    url: "{{ route('store.store') }}" ,
-                    type: "POST",
-                    data: jQuery('#store').serialize(),
-                    headers: {
-                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function( response ) {
-                        console.log('response');
-                        console.log(response);
-                    },
-                    error: function ( err ){
-                        console.log('err');
-                        console.log(err);
-                    }
-                });
 
-    });
-</script> --}}
-{{-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-<script type="text/javascript">
-    
-     
- </script> --}}
 @endsection

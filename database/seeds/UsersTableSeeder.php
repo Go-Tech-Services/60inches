@@ -13,12 +13,30 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Admin Admin',
-            'email' => 'admin@paper.com',
-            'email_verified_at' => now(),
-            'password' => Hash::make('secret'),
-            'created_at' => now(),
-            'updated_at' => now()
+            [
+
+                'name' => 'Riya Deshmukh',
+                'email' => 'riyan@gmail.com',
+                'email_verified_at' => now(),
+                'role_id'=> '2',
+                'phone' => '1234060669',
+                'password' => Hash::make('secret'),
+                'created_at' => now(),
+                'updated_at' => now()
+
+
+
+
+            ],[
+                'name' => 'Admin',
+                'email' => 'admin@paper.com',
+                'email_verified_at' => now(),
+                'role_id'=> '1',
+                'phone' => '1234560669',
+                'password' => Hash::make('secret'),
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
         ]);
     }
 }

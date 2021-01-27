@@ -48,7 +48,7 @@
                                 <tbody>
                                      @foreach ($clients as $client)
                                         <tr>
-                                            <td>{{ $client->id }}</td>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $client->client_name }}</td>
 
                                             <td>
@@ -66,7 +66,22 @@
                                             </td>
                                             <td>{{ $client->created_at->format('d/m/Y H:i') }}</td>
                                             <td>
-                                            <a href="{{ url('client/view', $client)}}"  class="edit-modal btn btn-info">View</a>
+                                            <span style="float:left;">
+                                             <form action="{{url('client/view/'.$client->id)}}" >
+                                                @csrf
+                                                @method('get')
+                                                <input type="hidden" name="id" value="{{ $client->id }}">
+                                                <button type="submit" class="btn btn-primary">view</button>
+                                            </form>
+                                            </span>
+                                            <span style="float:right;">
+                                            <form action="{{url('client/delete/'.$client->id)}}" >
+                                                @csrf
+                                                @method('get')
+                                                <button type="submit" class="btn btn-primary">Delete</button>
+                                            </form>
+                                            </span>
+                                            
                                             </td>
                                         </tr>
                                     @endforeach

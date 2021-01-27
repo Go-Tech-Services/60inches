@@ -27,16 +27,16 @@ class LoginController extends Controller
      * @var string
      */
 
-    // protected function authenticated(Request $request, $user) {
+     protected function authenticated(Request $request, $user) {
     //   dd('djdsgjds');
-      // if ($user->role_id == 1) {
-      //   return redirect('/admin');
-      // } else if ($user->role_id == 2) {
-      //   return redirect('/author');
-      // } else {
-      //   return redirect('/blog');
-      // }
-//    }
+      if ($user->role_id == 1) {
+        return redirect('/user');
+     } else if ($user->role_id == 2) {
+      return redirect('/store');
+      } else {
+        return redirect('/dashboard');
+       }
+  }
    
 
      protected $redirectTo = '/home';

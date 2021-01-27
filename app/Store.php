@@ -17,7 +17,7 @@ class Store extends Model
      * @var array
      */
     protected $fillable = [
-        'id','owner_name','store_name','store_address','email','phone','store_logo','created_by','updated_by',
+        'id','owner_name','store_name','store_address','email','phone','store_logo','created_by','updated_by','role_id',
     ];
     
     // public function get_users(){

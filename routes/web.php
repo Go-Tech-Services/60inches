@@ -46,14 +46,30 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::resource('store', 'StoreController');
 	Route::post('/store/store', 'StoreController@store');
+	// Route::get('/store/{id}/edit', 'StoreController@edit');
+	//Route::get('/store/index', 'StoreController@index');
+	Route::post('/store/edit/{id}','StoreController@update');
+	//Route::post('/store',['as'=>'store/update', 'uses' =>'StoreController@update']);
+	Route::post('/store/show', 'StoreController@show');
 	Route::get('{page}', ['as' => 'page.index', 'uses' => 'PageController@index']);
 	 
-	// Route::resource('client', 'ClientController');
+	//Route::resource('client', 'ClientController');
 	Route::post('/client/store', 'ClientController@store');
 	Route::get('/client/index', 'ClientController@index');
 	Route::get('/client/create', 'ClientController@create');
-	Route::get('/client/view', 'ClientController@view');
-	Route::put('client/view/{id}', ['as' => 'profile.update', 'uses' => 'ClientController@view']);
+	Route::get('/client/view/{id}', 'ClientController@view');
+	Route::get('/client/view/{id}', 'ClientController@measurementStore');
+
+	// Route::get('/client/edit/{id}', 'ClientController@update');
+	// Route::get('/client/edit/{id}', 'ClientController@update');
+	Route::get('/client/show', 'ClientController@show');
+	Route::get('/client/delete/{id}', 'ClientController@destroy');
+	
+
+	Route::get('/client/edit/{id}', function(Request $request){
+		dd($request);
+	});
+	// Route::put('client/view/{id}', ['as' => 'profile.update', 'uses' => 'ClientController@view']);
 	
 
 	

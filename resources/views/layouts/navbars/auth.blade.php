@@ -26,7 +26,7 @@
             <li class="{{ $elementActive == 'Client' ? 'active' : '' }}">
                 <a href="{{ url('client/index') }}">
                     <i class="nc-icon nc-circle-10"></i>
-                    <p>{{ __('client Creation') }}</p>
+                    <p>{{ __('client') }}</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">
