@@ -180,7 +180,7 @@
                                <td>
                               
                                    <div style="width:500px" class="form-group col-md-2{{ $errors->has('upper_waist') ? ' has-danger' : '' }}">
-                                       <label class="form-control-label" for="upper_waist">{{ __('Upper_Waist') }}</label>
+                                       <label class="form-control-label" for="upper_waist">{{ __('Upper Waist') }}</label>
                                        <input type="text" name="upper_waist" id="upper_waist_val" class="form-control form-control-alternative{{ $errors->has('upper_waist') ? ' is-invalid' : '' }}" placeholder="{{ __('-') }}" value="{{ old('upper_waist', $measurement->upper_waist) }}" required autofocus>
 
                                        @if ($errors->has('upper_waist'))

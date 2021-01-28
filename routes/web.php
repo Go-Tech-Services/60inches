@@ -58,7 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/client/index', 'ClientController@index');
 	Route::get('/client/create', 'ClientController@create');
 	Route::get('/client/view/{id}', 'ClientController@view');
-	Route::get('/client/view/{id}', 'ClientController@measurementStore');
+	Route::get('/client', 'ClientController@measurementStore');
 
 	// Route::get('/client/edit/{id}', 'ClientController@update');
 	// Route::get('/client/edit/{id}', 'ClientController@update');
