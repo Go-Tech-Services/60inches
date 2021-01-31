@@ -58,18 +58,21 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/client/index', 'ClientController@index');
 	Route::get('/client/create', 'ClientController@create');
 	Route::get('/client/view/{id}', 'ClientController@view');
-	Route::get('/client', 'ClientController@measurementStore');
-
-	// Route::get('/client/edit/{id}', 'ClientController@update');
-	// Route::get('/client/edit/{id}', 'ClientController@update');
-	Route::get('/client/show', 'ClientController@show');
-	Route::get('/client/delete/{id}', 'ClientController@destroy');
+	Route::get('/measurement/view/{id}','ClientController@measurementStore');
+	Route::get('/measurement/view/{id}', 'ClientController@measurementUpdate');
 	
 
-	Route::get('/client/edit/{id}', function(Request $request){
-		dd($request);
-	});
-	// Route::put('client/view/{id}', ['as' => 'profile.update', 'uses' => 'ClientController@view']);
+
+	//Route::get('/client/edit/{id}', 'ClientController@edit');
+	//Route::get('/client/index', 'ClientController@update');
+	Route::get('/client/show', 'ClientController@show');
+	//Route::get('/client/delete/{id}', 'ClientController@destroy');
+	Route::resource('role', 'RoleController');
+
+	// Route::get('/client/edit/{id}}', function(Request $request){
+	// 	dd($request);
+	// });
+	
 	
 
 	

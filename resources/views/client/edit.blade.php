@@ -20,7 +20,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="{{ url('client/edit/{id}', $client->id) }}" autocomplete="off">
+                            <form method="post" action="{{ url('client/edit', $client->id) }}" autocomplete="off">
                                 @csrf
                               <div class="pl-lg-4">
                                
@@ -98,7 +98,7 @@
                                        </div> </td>
                                    </div>     
                                    
-                           </table> </form>
+                           </table> 
                                      <div class="text-center">
                                         <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
                                     </div>

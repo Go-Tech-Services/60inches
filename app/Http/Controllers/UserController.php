@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\StoreController;
 use App\Store;
 
+
 class UserController extends Controller
 {
     /**
@@ -98,4 +99,6 @@ class UserController extends Controller
 
         return redirect()->route('user.index')->withStatus(__('User successfully deleted.'));
     }
+
+   
 }

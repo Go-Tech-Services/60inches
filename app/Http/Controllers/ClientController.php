@@ -14,17 +14,17 @@ class ClientController extends Controller
 {
     public function index(Request $request)
     {
-        $measurement = Measurements::all();
+        $measurement = Measurements::get();
         $clients = Client::all();
-        return view('client.index',['clients' => $clients,'measurement' => $measurement]);
+        return view('client.index',['clients' => $clients]);
     }
     public function create()
     {
-       // $measurement = Measurements::all();
+        $clients = Client::all();
         $storelist = Store::all();
         // dd($storelist);
         return view('client.create', compact(
-                'storelist','$measurement'
+               'clients' ,'storelist'
             )
         );
     
@@ -34,7 +34,7 @@ class ClientController extends Controller
    
  public function store(Request $request)
     {
-        // dd($request);
+        //dd($request);
         $request->validate([
         'client_name' => 'required',
         'client_phone' => 'required|', 
@@ -71,13 +71,16 @@ class ClientController extends Controller
             
         return redirect('client/index')->withStatus(__('User successfully created.'));
 
+
     }
     public function view(Request $request)
-    {
-        $measurement = Measurements::all();
+    {  
         $id = $request->id;
         $client = Client::find($id);
-        return view('client.view', compact('client','measurement'));
+        $clients = Client::where('id',$id)->first();
+        $measurement = Measurements::where('client_id',$id)->first();
+        //dd($request);
+        return view('client.view',compact('client','measurement','clients'));
 
     }
     public function edit($id)
@@ -101,7 +104,6 @@ class ClientController extends Controller
       
          $id = $request->id;
          $client = Client::find($id);
-         
          $client->client_name = $request->get('client_name');
          $client->client_phone = $request->get('client_phone');
          $client->email = $request->get('email');
@@ -145,11 +147,17 @@ class ClientController extends Controller
         public function measurementStore(Request $request)
         {
             // dd($request);
-             $request->validate([
+            //  $request->validate([
                
-             ]);
-    
+            //  ]);
+           
+           
+           
             $measurement = new Measurements();
+            $id =$request->id;
+            $client_id = \DB::table('client_info')->where('id',$measurement->client_id)->first();
+           
+            // $clients = Client::all();
             $measurement->client_id = $request->get('client_id');
             $measurement->neck = $request->get('neck'); 
             $measurement->shoulder = $request->get('shoulder');
@@ -167,39 +175,40 @@ class ClientController extends Controller
             $measurement->fork = $request->get('fork');
             $measurement->shoe_size = $request->get('shoe_size');
             $measurement->save();
-                
-            return redirect('client/view/{id}')->withStatus(__(''));
+                 dd($measurement);
+            return redirect('/measurement/view')->withStatus(__(''));
     
         }
     
-        // public function measurementUpdate(Request $request)
-        // {
-            
-        //     $ $id = $request->id;
-        //     $measurement = Measurements::find($id);
-        //     $measurement->client_id = $request->get('client_id');
-        //     $measurement->neck = $request->get('neck'); 
-        //     $measurement->shoulder = $request->get('shoulder');
-        //     $measurement->upper_bust = $request->get('upper_bust');
-        //     $measurement->bust = $request->get('bust');
-        //     $measurement->cup = $request->get('cup');
-        //     $measurement->under_bust = $request->get('under_bust');
-        //     $measurement->upper_waist = $request->get('upper_waist');
-        //     $measurement->hips = $request->get('hips');
-        //     $measurement->knee = $request->get('knee');
-        //     $measurement->ankle = $request->get('ankle');
-        //     $measurement->thigh_round = $request->get('thigh_round');
-        //     $measurement->calf_round = $request->get('calf_round');
-        //     $measurement->dark_point = $request->get('dark_point');
-        //     $measurement->fork = $request->get('fork');
-        //     $measurement->shoe_size = $request->get('shoe_size');
-        //     $measurement->save();
-                
-        //     return redirect('client/view/{id}')->withStatus(__(''));
-    
-        // }
-   
+        public function measurementUpdate(Request $request)
+        {
+           
+            // $request->validate([
+               
+            // ]);
 
+            
+            $id = $request->id;
+            $measurement = Measurements::find($id);
+            $measurement->neck = $request->get('neck'); 
+            $measurement->shoulder = $request->get('shoulder');
+            $measurement->upper_bust = $request->get('upper_bust');
+            $measurement->bust = $request->get('bust');
+            $measurement->cup = $request->get('cup');
+            $measurement->under_bust = $request->get('under_bust');
+            $measurement->upper_waist = $request->get('upper_waist');
+            $measurement->hips = $request->get('hips');
+            $measurement->knee = $request->get('knee');
+            $measurement->ankle = $request->get('ankle');
+            $measurement->thigh_round = $request->get('thigh_round');
+            $measurement->calf_round = $request->get('calf_round');
+            $measurement->dark_point = $request->get('dark_point');
+            $measurement->fork = $request->get('fork');
+            $measurement->shoe_size = $request->get('shoe_size');
+            $measurement->save();
+                
+            return redirect('/measurement/view')->withStatus(__('Data Added Successfully'));   
+        }
 
 }
 

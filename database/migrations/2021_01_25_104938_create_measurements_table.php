@@ -15,7 +15,7 @@ class CreateMeasurementsTable extends Migration
     {
         Schema::create('measurements', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('client_id')->nullable();
+            $table->string('client_id');
             $table->string('neck');
             $table->string('shoulder');
             $table->string('upper_bust');
