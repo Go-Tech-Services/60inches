@@ -60,7 +60,7 @@
                                 @endif
                             </div>
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <div class="form-check">
                                      <label class="form-check-label">
                                         <input class="form-check-input" name="remember" type="checkbox" value="" {{ old('remember') ? 'checked' : '' }}>
@@ -69,7 +69,7 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="ui section divider width100 mar-top-20px"></div>
                     <div class="ui error message mar-top-30px" style="padding-bottom: 14px; margin-left: 25px; border-right-width: 25px; padding-right: 22px; margin-right: 149px; "></div>
@@ -80,13 +80,19 @@
                         </div>
                     </div>
                 </form>
-                <a href="{{ route('password.request') }}" class="btn btn-link">
+                <!-- <a href="{{ route('password.request') }}" class="btn btn-link">
+                    {{ __('Forgot password') }}
+                </a>
+                <a href="{{ route('register') }}" class="btn btn-link float-right">
+                    {{ __('Create Account') }}
+                </a> -->
+            </div>
+            <a href="{{ route('password.request') }}" class="btn btn-link">
                     {{ __('Forgot password') }}
                 </a>
                 <a href="{{ route('register') }}" class="btn btn-link float-right">
                     {{ __('Create Account') }}
                 </a>
-            </div>
         </div>
     </div>
 @endsection
