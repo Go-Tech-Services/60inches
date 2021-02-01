@@ -19,20 +19,20 @@
                             </div>
                         @endif
 
-                        <form class="form" method="POST" action="{{ route('password.email') }}">
+                        <form class="form" method="POST" action="{{ route('password-reset') }}">
                             @csrf
 
-                            <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }} mb-3">
+                            <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('Phone Number') }}" type="text" name="phone" value="{{ old('phone') }}" required autofocus>
+                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="text" name="email" value="{{ old('email') }}" required autofocus>
                                 </div>
-                                @if ($errors->has('phone'))
+                                @if ($errors->has('email'))
                                     <div>
                                         <span class="invalid-feedback" style="display: block" role="alert">
-                                            <strong>{{ $errors->first('phone') }}</strong>
+                                            <strong>{{ $errors->first('email') }}</strong>
                                         </span>
                                     </div>
                                 @endif

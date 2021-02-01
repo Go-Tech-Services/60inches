@@ -23,6 +23,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/store', 'StoreController@create');
 // Route::resource('store', 'StoreController');
 // Route::post('/store/store', 'StoreController@store');
+
+	// Route::get('password-reset', 'Auth\ForgotPasswordController@showForm'); //I did not create this controller. it simply displays a view with a form to take the email
+	// Route::post('password-reset', 'Auth\ForgotPasswordController@sendPasswordResetToken')->name('password-reset');
+	// Route::get('reset-password/{token}', 'Auth\ForgotPasswordController@showPasswordResetForm');
+	// Route::post('reset-password/{token}', 'Auth\ForgotPasswordController@resetPassword');
+	// Route::get('text-sms', 'Auth\ForgotPasswordController@textSms'); //I did not create this controller. it simply displays a view with a form to take the email
+
 Route::get('/user',function()  
 {  
   return User::find(store_id)->Store;  
@@ -54,6 +61,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/client/create', 'ClientController@create');
 	Route::get('/client/view', 'ClientController@view');
 	Route::put('client/view/{id}', ['as' => 'profile.update', 'uses' => 'ClientController@view']);
+
+
+	
 	
 
 	
